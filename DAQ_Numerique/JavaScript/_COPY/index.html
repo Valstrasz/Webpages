@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="../style/style.css"/>
+        
+        <title> じゃんけんぽん - JanKenPon </title>
+    </head>
+
+    <body>
+        <header>
+
+        </header>
+
+        <main>
+            <section id="game_name_section">
+                <div class="syllable">
+                    <p class="char_jp"> じゃん </p>
+                    <p class="char_lat show_on_hover"> Jan </p>
+                </div>
+                <div class="syllable">
+                    <p class="char_jp"> けん </p>
+                    <p class="char_lat show_on_hover"> Ken </p>
+                </div>
+                <div class="syllable">
+                    <p class="char_jp"> ぽん </p>
+                    <p class="char_lat show_on_hover"> Pon </p>
+                </div>
+            </section>
+
+            <section id="game_ui">
+                <section id="choices_section">
+                    <div id="choices_grid_back">
+                        <img src="../rsc/revolving_arrows.svg" alt="Revolving arrows SVG">
+                    </div>
+
+                    <div id="choices_grid">
+                        <div id="paper" class="choice">
+                            <img src="../rsc/paper.svg" alt="Paper SVG">
+                        </div>
+                        <div id="rock" class="choice">
+                            <img src="../rsc/rock.svg" alt="Rock SVG">
+                        </div>
+                        <div id="scissors" class="choice">
+                            <img src="../rsc/scissors.svg" alt="Scissors SVG">
+                        </div>
+                    </div>
+                </section>
+
+                <section id="scores">
+                    <div id="win" class="score"> WIN </div>
+                    <div id="draw" class="score"> DRAW </div>
+                    <div id="loss" class="score"> LOSS </div>
+                </section>
+
+                <section>
+                    <button id="reset_btn"> NEW GAME </button>
+                </section>
+            </section>
+        </main>
+
+        <footer>
+
+        </footer>
+
+        <script src="../script/script.js"></script>
+    </body>
+</html>

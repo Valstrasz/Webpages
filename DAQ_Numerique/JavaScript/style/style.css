@@ -1,0 +1,408 @@
+/*/////////*/
+/* IMPORTS */
+/* style sheets */
+@import url("./reset.css");
+/* fonts */
+/* @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reggae+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap");
+
+
+/*////////////*/
+/* ANIMATIONS */
+@keyframes revolvingArrows_anim {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/*////////*/
+/* STYLES */
+:root {
+    /*/////////////////*/
+    /*/// VARIABLES ///*/
+    /* DIMENSIONS */
+    --sectionGameNameHeight: 20vh;
+    --sectionGameUiHeight: 65vh;
+    --sectionGameUiWidth: var(--sectionGameUiHeight);
+    --sectionGameBtnHeight: 15vh;
+    
+    --gameAreaHeight: calc(var(--sectionGameUiHeight));
+    --gameAreaWidth: var(--gameAreaHeight);
+
+
+    /* COLORS */
+    --redRisingSun_opaque: rgb(189, 0, 44);
+    --redRisingSun_translucid: rgba(188, 0, 45, 0.5);
+    --redRisingSun_ghost: rgba(188, 0, 45, 0.2);
+
+    --choiceBackNotHover: rgb(127, 127, 127);
+    --choiceBackHover: white;
+
+    --choiceImgNotHover: #410110;
+    --choiceImgHover: #bc002d;
+
+    --colorWinRGBTuple: 58, 160, 58;
+    --colorLossRGBTuple: 255, 72, 72;
+    --colorDrawRGBTuple: 255, 147, 59;
+ 
+
+    /* ANIMATIONS / TRANSITIONS */
+    --choiceHoverTransition: ease-out 0.5s;
+
+
+    /* GRID */
+    --gridCellNumber: 5;
+    --gridSquare: calc(var(--gameAreaHeight) * 0.8);
+
+    
+    /* FONTS */
+    /* font-family: "Dela Gothic One"; */
+    /* font-family: "Potta One"; */
+    /* font-family: "Reggae One"; */
+    /* font-family: "RocknRoll One"; */
+    font-family: "Yuji Syuku";
+
+
+    cursor: default;
+}
+
+
+.centered {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+.swirly {
+    animation: revolvingArrows_anim 1s cubic-bezier(.21,.91,.78,1) 1;
+}
+
+
+.show_on_hover {
+    visibility: hidden;
+}
+
+
+main {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+
+    display: grid;
+    grid-template-areas:
+        "game_name"
+        "game_ui"
+        "game_btn";
+    grid-template-columns: 100vw;
+    grid-template-rows: var(--sectionGameNameHeight) var(--sectionGameUiHeight) var(--sectionGameBtnHeight);
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+
+section#game_name_section {
+    grid-area: game_name;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    font-size: calc(var(--sectionGameNameHeight) / 1.3);
+    font-weight: bold;
+}
+
+
+section#game_name_section .syllable {
+    & p {
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+    }
+
+
+    & .char_jp {
+        font-size: 1em;
+    }
+
+
+    & .char_lat {
+        font-size: 0.25em;
+    }
+
+
+    &:hover {
+        color: var(--redRisingSun_opaque);
+    
+
+        & > .show_on_hover {
+            visibility: visible;
+        }
+    }
+}
+
+
+section#game_ui_section {
+    grid-area: game_ui;
+
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+    
+    height: var(--sectionGameUiHeight);
+    width: var(--sectionGameUiWidth);
+}
+
+
+section#game_area {
+    position: relative;
+    box-sizing: border-box;
+
+    height: var(--gameAreaHeight);
+    width: var(--gameAreaWidth);
+
+    background-color: var(--redRisingSun_opaque);
+    border-radius: 100%;
+}
+
+
+#choices_grid_back {
+    height: var(--gridSquare);
+    width: var(--gridSquare);
+}
+
+
+#choices_grid_back > img {
+    height: 100%;
+    width: 100%;
+}
+
+
+#choices_grid {
+    display: grid;
+    /* creation of a 'gridCellNumber' square GRID with 'gridCellNumber'*'gridCellNumber' CELLs */
+    grid-template-columns: repeat(var(--gridCellNumber), calc(var(--gridSquare) / var(--gridCellNumber)));
+    grid-template-rows:  repeat(var(--gridCellNumber), calc(var(--gridSquare) / var(--gridCellNumber)));
+}
+
+
+.choice {
+    box-sizing: border-box;
+
+    height: 100%;
+    width: 100%;
+    padding: 20%;
+
+    border-radius: 100%;
+
+    background-color: var(--choiceBackNotHover);
+
+    transition: background-color var(--choiceHoverTransition);
+
+
+    &:hover {
+        background-color: var(--choiceBackHover);
+
+        cursor: pointer;
+        
+
+        & svg > path {
+            fill: var(--choiceImgHover);
+        }
+    }
+}
+
+
+.choice > svg {
+    height: 100%;
+    width: 100%;
+
+
+    & > path {
+        fill: var(--choiceImgNotHover);
+    
+        transition: fill var(--choiceHoverTransition);
+    }
+}
+
+
+#paper {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+
+#rock {
+    grid-column: 5;
+    grid-row: 4;
+}
+
+
+#scissors {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+
+#results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    height: var(--gridSquare);
+    width: var(--gridSquare);
+
+    text-align: center;
+}
+
+
+#results #round {
+    margin-top: 1.75em;
+    
+    color: white;
+}
+#results #phase {
+    margin: 0.4em 0em;
+
+    color: gray;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+#results #scores {
+    font-size: 0.75em;
+
+
+    & .category {
+        padding: 0.25em 0.65em;
+
+        & > p {
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+
+    & #score_double {
+        margin-bottom: 0.5em;
+    }
+
+
+    & #win {
+        color: rgb(var(--colorWinRGBTuple));
+
+
+        /* &.active {
+            & p {
+                text-shadow: 0px 0px 5px rgba(var(--colorWinRGBTuple), 0.75);
+                border-color: rgb(var(--colorWinRGBTuple));
+            }
+        } */
+    }
+
+
+    & #loss {
+        color: rgb(var(--colorLossRGBTuple));
+
+        
+        /* &.active {
+            & p {
+                text-shadow: 0px 0px 5px rgba(var(--colorLossRGBTuple), 0.75);
+                border-color: rgb(var(--colorLossRGBTuple));
+            }
+        } */
+    }
+
+
+    & #draw {
+        color: rgb(var(--colorDrawRGBTuple));
+
+        
+        /* &.active {
+            & p {
+                text-shadow: 0px 0px 5px rgba(var(--colorDrawRGBTuple), 0.75);
+                border-color: rgb(var(--colorDrawRGBTuple));
+            }
+        } */
+    }
+
+
+    & .active > p {
+        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+    }
+}
+
+
+#results .category {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+#score_double {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+
+section#game_btn_section {
+    grid-area: game_btn;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
+    height: 100%;
+    width: 100%;
+}
+
+
+section#game_btn_section > button {
+    padding: 0.25em 0.65em;
+
+    border-style: none;
+    border-radius: 1em;
+
+    background-color: var(--choiceImgNotHover);
+
+    color: white;
+    font-family: "Yuji Syuku";
+    font-weight: bold;
+
+
+    &:hover {
+        background-color: var(--choiceImgHover);
+
+        cursor: pointer;
+    }
+}
+
+
+#next_btn {
+    margin-top: 1em;
+
+    transform: scale(1.25);
+}
+
+
+#reset_btn {
+    transform: scale(0.8);
+}
