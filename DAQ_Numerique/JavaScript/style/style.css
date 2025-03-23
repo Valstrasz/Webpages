@@ -10,12 +10,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap");
 
 
+
 /*////////////*/
 /* ANIMATIONS */
 @keyframes revolvingArrows_anim {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
 
 
 /*////////*/
@@ -29,8 +31,14 @@
     --sectionGameUiWidth: var(--sectionGameUiHeight);
     --sectionGameBtnHeight: 15vh;
     
-    --gameAreaHeight: calc(var(--sectionGameUiHeight));
+    --gameAreaHeight: calc(var(--sectionGameUiHeight) / 1.25);
     --gameAreaWidth: var(--gameAreaHeight);
+
+
+    /* FONT-SIZES */    
+    --fontSizeRound: calc(var(--gameAreaHeight) / 25);
+    --fontSizePhase: calc(var(--gameAreaHeight) / 10);
+    --fontSizeScore: calc(var(--gameAreaHeight) / 35);
 
 
     /* COLORS */
@@ -44,6 +52,13 @@
     --choiceImgNotHover: #410110;
     --choiceImgHover: #bc002d;
 
+    --colorPlayer: rgb(51, 140, 255);
+    --colorComputer: rgb(255, 72, 200);
+    --colorBoth: rgb(243, 255, 72);
+
+    --colorWinRGB: rgb(58, 160, 58);
+    --colorLossRGB: rgb(255, 72, 72);
+    --colorDrawRGB: rgb(255, 147, 59);
     --colorWinRGBTuple: 58, 160, 58;
     --colorLossRGBTuple: 255, 72, 72;
     --colorDrawRGBTuple: 255, 147, 59;
@@ -67,6 +82,7 @@
 
 
     cursor: default;
+    font-size: 2vh;
 }
 
 
@@ -91,11 +107,6 @@
 
 
 main {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-
     display: grid;
     grid-template-areas:
         "game_name"
@@ -105,9 +116,6 @@ main {
     grid-template-rows: var(--sectionGameNameHeight) var(--sectionGameUiHeight) var(--sectionGameBtnHeight);
     justify-content: center;
     align-items: center;
-
-    height: 100vh;
-    width: 100vw;
 }
 
 
@@ -119,7 +127,9 @@ section#game_name_section {
     justify-content: center;
     align-items: center;
 
-    font-size: calc(var(--sectionGameNameHeight) / 1.3);
+    margin-top: 0.5em;
+
+    font-size: calc(var(--sectionGameNameHeight) / 1.5);
     font-weight: bold;
 }
 
@@ -136,8 +146,6 @@ section#game_name_section .syllable {
     & .char_jp {
         font-size: 1em;
     }
-
-
     & .char_lat {
         font-size: 0.25em;
     }
@@ -200,11 +208,11 @@ section#game_area {
 
 
 .choice {
+    position: relative;
     box-sizing: border-box;
 
     height: 100%;
     width: 100%;
-    padding: 20%;
 
     border-radius: 100%;
 
@@ -223,13 +231,71 @@ section#game_area {
             fill: var(--choiceImgHover);
         }
     }
+
+
+    &.selected {
+        &::after {
+            white-space: nowrap;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* when selected, style content ::after */
+        &.selection_player:not(selection_computer) {
+            background-color: var(--colorPlayer);
+
+
+            &::after {
+                color: var(--colorPlayer);
+
+                content: "YOU";
+            }
+        }
+        &.selection_computer:not(selection_player) {
+            background-color: var(--colorComputer);
+
+
+            &::after {
+                color: var(--colorComputer);
+    
+                content: "CPU";
+            }
+        }
+        &.selection_computer.selection_player {
+            background-color: var(--colorBoth);
+
+
+            &::after {
+                color: var(--colorBoth);
+    
+                content: "YOU CPU";
+            }
+        }
+    }
+}
+
+
+.choice::after {
+    display: block;
+
+    content: "";
+
+    /* centering below its associated ".choice" element */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translatex(-50%);
+
+    font-size: 0.75em;
 }
 
 
 .choice > svg {
-    height: 100%;
-    width: 100%;
+    height: 50%;
+    width: 50%;
 
+    /* necessary on a SVG element for "event bubbling" to happen to its parents, when the SVG element itself fires an event due to a pointer */
+    pointer-events: none;
 
     & > path {
         fill: var(--choiceImgNotHover);
@@ -242,15 +308,20 @@ section#game_area {
 #paper {
     grid-column: 3;
     grid-row: 1;
+
+    & > .centered {
+        position: absolute;
+        
+        top: 50%;
+        left: 50%;
+    
+        transform: translate(-50%, -50%) scaleY(-1);
+    }
 }
-
-
 #rock {
     grid-column: 5;
     grid-row: 4;
 }
-
-
 #scissors {
     grid-column: 1;
     grid-row: 4;
@@ -262,7 +333,6 @@ section#game_area {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
 
     height: var(--gridSquare);
     width: var(--gridSquare);
@@ -272,92 +342,89 @@ section#game_area {
 
 
 #results #round {
-    margin-top: 1.75em;
+    margin-top: 1em;
     
     color: white;
-}
-#results #phase {
-    margin: 0.4em 0em;
-
-    color: gray;
-    font-size: 2.5em;
-    font-weight: bold;
-}
-#results #scores {
-    font-size: 0.75em;
-
+    font-size: var(--fontSizeRound);
 
     & .category {
-        padding: 0.25em 0.65em;
+        font-weight: bold;
+    }
+}
+#results #step {
+    position: relative;
+    height: var(--fontSizePhase);
 
-        & > p {
-            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-        }
+    margin: 0.75em 0em;
+
+
+    &::after {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+        transform: translateX(-50%);
+
+        color: gray;
+        font-size: var(--fontSizePhase);
+        font-weight: 900;
+
+        content: "CHOOSE";
+    }
+    
+    
+    &.round_win::after {
+        color: var(--colorWinRGB);
+
+        content: "WON";
+    }
+    &.round_loss::after {
+        color: var(--colorLossRGB);
+
+        content: "LOST";
+    }
+    &.round_draw::after {
+        color: var(--colorDrawRGB);
+
+        content: "DRAW";
+    }
+}
+#results #scores {
+    font-size: var(--fontSizeScore);
+
+    & .name {
+        font-weight: bold;
     }
 
-
-    & #score_double {
-        margin-bottom: 0.5em;
+    
+    & p {
+        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     }
+    /* & .active > p {
+        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+    } */
 
 
     & #win {
         color: rgb(var(--colorWinRGBTuple));
-
-
-        /* &.active {
-            & p {
-                text-shadow: 0px 0px 5px rgba(var(--colorWinRGBTuple), 0.75);
-                border-color: rgb(var(--colorWinRGBTuple));
-            }
-        } */
     }
-
-
     & #loss {
         color: rgb(var(--colorLossRGBTuple));
-
-        
-        /* &.active {
-            & p {
-                text-shadow: 0px 0px 5px rgba(var(--colorLossRGBTuple), 0.75);
-                border-color: rgb(var(--colorLossRGBTuple));
-            }
-        } */
     }
-
-
     & #draw {
         color: rgb(var(--colorDrawRGBTuple));
-
-        
-        /* &.active {
-            & p {
-                text-shadow: 0px 0px 5px rgba(var(--colorDrawRGBTuple), 0.75);
-                border-color: rgb(var(--colorDrawRGBTuple));
-            }
-        } */
     }
 
 
-    & .active > p {
-        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+    & #score_double {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2ch;
+
+        margin: calc(var(--fontSizeScore)) 0em;
     }
-}
-
-
-#results .category {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-
-#score_double {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
 }
 
 
@@ -396,13 +463,9 @@ section#game_btn_section > button {
 }
 
 
-#next_btn {
-    margin-top: 1em;
-
-    transform: scale(1.25);
+#btn_next {
+    font-size: 1.5em;
 }
-
-
-#reset_btn {
-    transform: scale(0.8);
+#btn_reset {
+    font-size: 1em;
 }
