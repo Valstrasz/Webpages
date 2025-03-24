@@ -1,7 +1,7 @@
 <h1> Webpages </h1>
 
 <h2> Welcome </h2>
-<p>
+<p style="margin-left: 1rem;">
   Simple webpage serving as a showcase of my projects created as part of my learning of WEB development
 </p>
 <a href="https://github.com/Valstrasz/Webpages/tree/main/Welcome"> JUMP TO PROJECT </a>
