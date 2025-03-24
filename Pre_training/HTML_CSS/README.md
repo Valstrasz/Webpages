@@ -7,5 +7,5 @@
 
 <h2> Entry point </h2>
 <p>
-  <a href="https://github.com/Valstrasz/Webpages/blob/main/Pre_training/HTML_CSS/page/index.html"> ./page/index.html </a>
+  <a href="./page/index.html"> ./page/index.html </a>
 </p>
