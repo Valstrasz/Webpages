@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+
+        <link rel="stylesheet" href="../style/about.css"/>
+
+        <title> Welcome to Black Mesa! </title>
+    </head>
+
+    <body>
+        <header>
+            <section class="logo_name">
+                <img src="../res/Black_Mesa_logo.svg" alt="Black Mesa's logo"/>
+
+                <section class="name">
+                    <a href="./index.html">
+                        <!-- Displayed when ".name" is not hovered -->
+                        <div id="name_notHovered">
+                            <h1> </h1>
+                            <h2> </h2>
+                        </div>
+                        <!-- Displayed when ".name" is hovered -->
+                        <div id="name_hovered">
+                            <h1> </h1>
+                            <h2> </h2>
+                        </div>
+                    </a>
+                </section>
+            </section>
+
+            <nav>
+                <ul>
+                    <li> <a href="./index.html">Home</a> </li>
+                    <li> <a href="./research.html">Research</a> </li>
+                    <li> <a href="./about.html">About us</a> </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="section_image"></section>
+
+            <section id="section_info">
+                <div class="info">
+                    <p class="category"> Creation date </p>
+                    <p class="data"> 1950s </p>
+                </div>
+
+                <div class="info">
+                    <p class="category"> Workforce </p>
+                    <div>
+                        <p class="sub_category"> Science team </p>
+                        <p class="data"> 2500 employees </p>
+                    </div>
+                    <div>
+                        <p class="sub_category"> Security force </p>
+                        <p class="data"> 1000 employees </p>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <p class="category"> Localisation </p>
+                    <p class="data"> New Mexico, United States of America </p>
+                </div>
+            </section>
+
+
+            <section id="section_form">
+                <form action="">
+                    <p> CONTACT US! </p>
+
+                    <div class="form_info">
+                        <label for="input_name"> Name </label>
+                        <input id="input_name" type="text" name="name" placeholder="A beautiful name..." required>
+                    </div>
+
+                    <div class="form_info">
+                        <label for="input_email"> Email </label>
+                        <input id="input_email" type="email" name="email" placeholder="An awesome email..." required>
+                    </div>
+
+                    <div class="form_info">
+                        <label for="input_message"> Message </label>
+                        <textarea id="input_message" name="message" placeholder="The thoughts of a genius..." required rows="3"></textarea>
+                    </div>
+
+                    <button> SEND </button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <section class="copyright">
+                <p id="copyright_notHovered"> </p>
+                <p id="copyright_hovered"> </p>
+            </section>
+        </footer>
+    </body>
+</html>

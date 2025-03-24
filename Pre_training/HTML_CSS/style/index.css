@@ -1,0 +1,36 @@
+@import url("./common.css");
+
+
+
+#motto {
+    position: absolute;
+    top: 0px;
+    left: 1rem;
+
+    font-size: 6rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+#logo {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+
+    height: 85%;
+
+    filter: invert(52%) sepia(70%) saturate(585%) hue-rotate(347deg) brightness(104%) contrast(86%);
+}
+
+
+#property {
+    position: absolute;
+    bottom: 0px;
+    left: 1rem;
+
+    font-size: 3rem;
+    font-weight: bold;
+    font-style: italic;
+}
