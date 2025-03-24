@@ -12,7 +12,7 @@
 </p>
 <a href="https://github.com/Valstrasz/Webpages/tree/main/Pre_training/HTML_CSS"> JUMP TO PROJECT </a>
 
-<h2> **Pre_training** > <i>JavaScript</i> </h2>
+<h2> Pre_training > <i>JavaScript</i> </h2>
 <p>
   Simple interactive wepbage designed for an introductory course in "JavaScript". 
 </p>
