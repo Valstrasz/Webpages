@@ -1,10 +1,10 @@
 <h1> Webpages </h1>
 
-<h2> Perso </h2>
+<h2> Welcome </h2>
 <p>
   Simple webpage serving as a showcase of my projects created as part of my learning of WEB development
 </p>
-<a href="https://github.com/Valstrasz/Webpages/tree/main/Perso"> JUMP TO PROJECT </a>
+<a href="https://github.com/Valstrasz/Webpages/tree/main/Welcome"> JUMP TO PROJECT </a>
 
 <h2> HTML / CSS </h2>
 <p>
