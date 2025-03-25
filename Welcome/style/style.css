@@ -1,0 +1,150 @@
+@import url("./reset.css");
+/* @import url("https://fonts.googleapis.com/css2?family=Prosto+One&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+
+
+:root {
+    height: 100%;
+    width: 100%;
+
+    font-family: Roboto;
+    font-size: 1vw;
+    font-weight: bold;
+
+
+    /* variables for sizes */
+    --marginMain: 2rem;
+
+
+    /* variables with values for "colors" */
+    --lightGray: #404040;
+    --darkGray: #292929;
+    --lightOrange: #ff8000;
+    --medOrange: #e67300;
+    --darkOrange: #af5800;
+
+
+    /* variables with values for "filters corresponding to colors" */
+    --lightGray_filter: invert(22%) sepia(0%) saturate(0%) hue-rotate(144deg) brightness(99%) contrast(87%);
+    --darkGray_filter: invert(14%) sepia(0%) saturate(1098%) hue-rotate(291deg) brightness(81%) contrast(88%);
+    --lightOrange_filter: invert(55%) sepia(28%) saturate(4682%) hue-rotate(0deg) brightness(102%) contrast(106%);
+    --medOrange_filter: invert(40%) sepia(97%) saturate(851%) hue-rotate(3deg) brightness(99%) contrast(101%);
+    --darkOrange_filter: invert(40%) sepia(78%) saturate(950%) hue-rotate(2deg) brightness(92%) contrast(104%);
+
+
+    /* variables for animations */
+    --fadeDuration: 0.5s;
+}
+
+
+body {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 50vh 100vh;
+    grid-template-areas: "grid_hero" "grid_project";
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--darkGray);
+}
+
+
+#section_hero {
+    grid-area: grid_hero;
+
+    position: relative;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: var(--lightOrange);
+}
+
+
+#div_cv_btn_container {
+    --divCvContainerSize: 10vw;
+
+    position: absolute;
+
+    box-sizing: border-box;
+
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    padding: 1em;
+
+    height: var(--divCvContainerSize);
+    width: var(--divCvContainerSize);
+
+    border-radius: 100%;
+
+    background-color: var(--lightOrange);
+
+
+    & #div_cv_btn {
+        position: relative;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        height: 100%;
+        width: 100%;
+
+        border-radius: 100%;
+
+        background-color: var(--darkOrange);
+
+        color: var(--darkGray);
+
+        transition: background-color 0.5s ease, color 0.5s ease;
+
+
+        & > p {
+            position: relative;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: calc(var(--divCvContainerSize) * 0.45);
+            text-align: center;
+
+            user-select: none;
+        }
+
+
+        &:hover {
+            cursor: pointer;
+
+            background-color: var(--medOrange);
+
+            color: var(--lightGray);
+        }
+    }
+}
+
+
+iframe {
+    --pdfWidth: 75vw;
+
+    display: none;
+
+    position: fixed;
+    top: 10vh;
+    left: calc( (100vw - var(--pdfWidth)) / 2 );
+
+    height: auto;
+    width: var(--pdfWidth);
+
+    border: none;
+}
+
+
+#section_project {
+    grid-area: grid_project;
+
+    height: 100%;
+    width: 100%;
+}
