@@ -66,10 +66,12 @@ main {
 }
 
 
-main > ul {
+main ul {
+    display: block;
+
     list-style-type: none;
 
-    margin-left: 1ch;
+    margin-left: 2ch;
 
 
     & > * {
