@@ -40,21 +40,56 @@
         </header>
 
         <main>
-            <p id="title"> Some of our researches <p class="color_diff">topics</p> </p>
+            <div id="background_image"></div>
 
-            <ul>
-                <li> Experimental propulsion </li>
-                <li> Applied mathematics </li>
-                <li> Theoretical physics </li>
-                <li> Hydroelectricity </li>
-                <li> Hydraulics </li>
-                <li> Radiation </li>
-                <li> Genetics </li>
-                <li> Rocketry </li>
-                <li> Robotics </li>
-                <li> Zoology </li>
-                <li> Lasers </li>
-            </ul>
+
+            <div id="cover_image">
+                <svg viewBox="0 0 300 100" preserveAspectRatio="none">
+                    <path d="M 0 0 l 300 0 l -75 100 L 0 100 Z"/>
+                </svg>
+            </div>
+
+
+            <div id="research_topic">
+                <p id="title"> Some of our research topics </p>
+
+                <ul>
+                    <li> Experimental propulsion </li>
+                    <li> Applied mathematics </li>
+                    <li> Theoretical physics </li>
+                    <li> Hydroelectricity </li>
+                    <li> Hydraulics </li>
+                    <li> Radiation </li>
+                    <li> Rocketry </li>
+                    <li> Robotics </li>
+                    <li> Genetics </li>
+                    <li> Zoology </li>
+                    <li> Lasers </li>
+                </ul>
+            </div>
+
+
+            <!-- <div id="image">
+                <svg viewBox="0 0 300 100">
+                    <mask id="imageMask">
+                        <path fill="#ffffff" d="M 0 100 l 100 -100 l 200 0 l 0 100 Z"/>
+                    </mask>
+    
+                    <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../res/research.jpg" mask="url(#imageMask)"></image>
+                </svg>
+            </div> -->
+
+            <!-- <div id="image">
+                <svg id="imageSvg" viewBox="0 0 300 100">
+                    <defs>
+                        <mask id="imageMask" maskUnits="objectBoundingBox" x="0px" y="0px">
+                            <path fill="#ffffff" d="M 0 100 l 100 -100 l 200 0 l 0 100 Z"/>
+                        </mask>
+                    </defs>
+    
+                    <path id="imageMasked" x="0px" y="0px" style="mask: url(#imageMask);" fill="#ffffff" d="M 0,0 l 300,0 0,100 -300,0 Z"/>
+                </svg>
+            </div> -->
         </main>
 
         <footer>

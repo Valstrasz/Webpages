@@ -240,6 +240,7 @@ section#game_area {
             font-weight: bold;
         }
 
+        
         /* when selected, style content ::after */
         &.selection_player:not(selection_computer) {
             background-color: var(--colorPlayer);

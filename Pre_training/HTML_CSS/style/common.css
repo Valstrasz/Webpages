@@ -55,6 +55,8 @@ header, footer {
 /******* HEADER *******/
 /******* HEADER *******/
 header {
+    /* position: relative; */
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -64,6 +66,20 @@ header {
     height: 100%;
 
     background-color: var(--darkGray);
+
+
+    /* & .header_after {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        
+        height: 10vh;
+        width: 10vw;
+
+        z-index: 1;
+
+        background-color: red;
+    } */
 }
 
 

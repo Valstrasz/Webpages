@@ -2,6 +2,102 @@
 
 
 
-ul {
-    list-style-type: none;
+main {
+    /* override the propriety from "common.css" */
+    margin: 0;
 }
+
+
+#background_image {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    height: 100%;
+    width: 50%;
+
+    /* flip image */
+    transform: scaleX(-1);
+
+    background-image: url("../res/research.jpg");
+    background-repeat: no-repeat;
+    background-size: 115% 100%;
+    background-position-x: 125%;
+}
+
+
+#cover_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    & > svg {
+        height: 100%;
+        width: 70%;
+
+        fill: var(--lightGray) !important;
+    }
+}
+
+
+#research_topic {
+    /* centering vertically */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    margin-left: 2.5ch;
+
+    font-size: 2rem;
+    letter-spacing: 0.2ch;
+
+
+
+    & #title {
+        margin-bottom: 0.5em;
+
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+}
+
+
+main > ul {
+    list-style-type: none;
+
+    margin-left: 1ch;
+
+
+    & > * {
+        margin-bottom: 0.35em;
+    }
+}
+
+
+/* #image {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    height: 100%;
+    width: 60%;
+
+    & > svg {
+        height: 100%;
+        width: 100%;
+    }
+} */
+
+/* #image {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+
+    background-color: red;
+
+    height: 100%;
+    width: 60%;
+} */

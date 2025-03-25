@@ -9,11 +9,11 @@
 
 main {
     display: grid;
-    grid-template-columns: var(--widthImage) 55vw 15vw;
+    grid-template-columns: var(--widthImage) 40vw 30vw;
     grid-template-rows: 100%;
     grid-template-areas: "grid_image grid_info grid_form";
 
-    /* override the propriety in "common.css" */
+    /* override the propriety from "common.css" */
     margin: 0;
 }
 
@@ -43,17 +43,37 @@ main {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start;
+    gap: 1.5em;
 
-    margin-left: 1ch;
+    margin-left: 5rem;
 
     font-size: 2rem;
 
 
-    & > {
-        
+    & .data {
+        margin-left: 2rem;
     }
+
+
+    & .sub_info {
+        margin-left: 2rem;
+    }
+}
+
+
+.sub_category {
+    color: rgb(20, 20, 20);
+    font-size: 0.85em;
+}
+
+
+.data {
+    margin-bottom: 0.5em;
+
+    color: rgb(40, 40, 40);
+    font-size: 0.7em;
 }
 
 
@@ -61,4 +81,100 @@ main {
     grid-area: grid_form;
 
     position: relative;
+
+    overflow: hidden;
+}
+
+
+form  {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 60%;
+    width: 40%;
+    padding: 0.75em 1.5ch;
+
+    color: white;
+
+    background-color: var(--darkOrange);
+
+    border-radius: 0.5em;
+
+
+    /* centering */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    & :is(input[type=text], input[type=email], textarea) {
+        border-style: none;
+        border-radius: 0.5em;
+
+        width: 80%;
+        margin: 0.5em 0ch 0.5em 2ch;
+        padding: 0.5em 1ch;
+    }
+
+
+    & button {
+        border-style: none;
+        border-radius: 0.5em;
+
+        padding: 0.5em 0.5ch 0.5em 0.875ch;
+
+        letter-spacing: 0.375ch;
+        font-weight: bold;
+        font-family: Prosto One;
+
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+
+#catch {
+    color: black;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+.form_info > label {
+   display: block;
+
+   cursor: pointer;
+}
+
+
+.gender {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2ch;
+}
+
+
+.radio_option *:hover {
+    cursor: pointer;
+}
+
+
+#logo {
+    position: absolute;
+    bottom: -3rem;
+    right: -4rem;
+
+    height: 50%;
+
+    z-index: -1;
+
+    filter: invert(27%) sepia(15%) saturate(1121%) hue-rotate(350deg) brightness(95%) contrast(84%);
 }

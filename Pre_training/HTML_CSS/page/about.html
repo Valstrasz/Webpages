@@ -46,15 +46,15 @@
                 <div class="info">
                     <p class="category"> Creation date </p>
                     <p class="data"> 1950s </p>
-                </div>
+                </div>  
 
                 <div class="info">
                     <p class="category"> Workforce </p>
-                    <div>
+                    <div class="sub_info">
                         <p class="sub_category"> Science team </p>
                         <p class="data"> 2500 employees </p>
                     </div>
-                    <div>
+                    <div class="sub_info">
                         <p class="sub_category"> Security force </p>
                         <p class="data"> 1000 employees </p>
                     </div>
@@ -69,7 +69,18 @@
 
             <section id="section_form">
                 <form action="">
-                    <p> CONTACT US! </p>
+                    <p id="catch"> CONTACT US! </p>
+
+                    <div class="form_info gender">
+                        <div class="radio_option">
+                            <input type="radio" name="gender" id="gender_mr" value="mr" checked/>
+                            <label for="gender_mr"> Mr. </label>
+                        </div>
+                        <div class="radio_option">
+                            <input type="radio" name="gender" id="gender_mrs" value="mrs"/>
+                            <label for="gender_mrs"> Mrs. </label>
+                        </div>
+                    </div>
 
                     <div class="form_info">
                         <label for="input_name"> Name </label>
@@ -78,16 +89,18 @@
 
                     <div class="form_info">
                         <label for="input_email"> Email </label>
-                        <input id="input_email" type="email" name="email" placeholder="An awesome email..." required>
+                        <input id="input_email" type="email" name="email" placeholder="A creative email..." required>
                     </div>
 
                     <div class="form_info">
                         <label for="input_message"> Message </label>
-                        <textarea id="input_message" name="message" placeholder="The thoughts of a genius..." required rows="3"></textarea>
+                        <textarea id="input_message" name="message" placeholder="The thoughts of a genius..." required rows="5"></textarea>
                     </div>
 
                     <button> SEND </button>
                 </form>
+
+                <img id="logo" src="../res/Black_Mesa_logo.svg" alt="Black Mesa's logo">
             </section>
         </main>
 
