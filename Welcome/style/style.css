@@ -246,6 +246,14 @@ body {
     border-radius: 1em;
 
 
+    transition: transform var(--transitionDuraTiming);
+
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+
     & .project_name {
         font-size: 3em;
     }
@@ -294,15 +302,13 @@ body {
             filter: var(--darkOrange_filter);
 
 
-            transition: filter var(--transitionDuraTiming), transform var(--transitionDuraTiming);
+            transition: filter var(--transitionDuraTiming);
 
 
             &:hover {
                 cursor: pointer;
     
                 filter: var(--white_filter);
-    
-                transform: scale(0.9);
             }
         }
     }
