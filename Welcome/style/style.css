@@ -76,12 +76,11 @@ body {
     position: absolute;
     box-sizing: border-box;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 100%;
-    grid-template-areas: "info_intro info_picture info_link";
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    /* flex-wrap: wrap; */
 
     height: 100%;
     width: 90%;
@@ -92,11 +91,16 @@ body {
     /* centering on both axes */
     inset: 50%;
     transform: translate(-50%, -50%);
+
+
+    /* & > * {
+        min-width: 100px;
+    } */
 }
 
 
 #div_info_intro {
-    grid-area: info_intro;
+    width: 30vw;
 
     padding: 1em 1ch;
 
@@ -106,13 +110,11 @@ body {
 
 
 #div_info_picture {
-    grid-area: info_picture;
-
     position: relative;
     /* inset: 0; */
 
     height: 100%;
-    width: 100%;
+    width: 30vw;
 
 
     & #profile_pic {
@@ -166,8 +168,6 @@ body {
 
 
 #div_info_link {
-    grid-area: info_link;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -175,7 +175,7 @@ body {
     gap: 20%;
 
     height: 100%;
-    width: 100%;
+    width: 30vw;
 
     padding: 1em 1ch;
 
@@ -236,7 +236,7 @@ body {
     height: 100%;
     width: 100%;
 
-    padding-top: calc(var(--divCvContainerSize) / 2);
+    padding-top: calc((var(--divCvContainerSize) / 2) + 3em);
 }
 
 
@@ -249,12 +249,15 @@ body {
     align-items: center;
 
     height: 75%;
-    width: 35%;
+    max-width: 35%;
+    min-width: 300px;
 
-    padding: 2em 0;
+    padding: 2em 3ch;
 
     background-color: var(--lightOrange);
     border-radius: 1em;
+
+    overflow: hidden;
 
 
     transition: transform var(--transitionDuraTiming);
@@ -268,31 +271,54 @@ body {
 
 .project_name {
     /* flex-basis: 20%; */
-    height: 10%;
+    position: relative;
 
-    font-size: 3em;
+    top: -1em;
+    left: 0px;
+
+    height: 3em;
+    width: 125%;
+
+    font-size: 6vmin;
+
+    background-color: var(--medOrange);
+
+
+    & p {
+        position: absolute;
+
+        display: block;
+
+        width: fit-content;
+
+    
+        /* centering horizontally */
+        bottom: 0.25em;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 
 .project_thumbnail {
     /* flex-basis: 25%; */
+    aspect-ratio: 16 / 9;
     height: 55%;
     max-width: 90%;
-
-    margin-top: 2em;
-    margin-bottom: 1em;
 
     border-radius: 1em;
 }
 
 
 .project_description {
+    --fontSize: 3vmin;
+
     /* flex-basis: 25%; */
-    height: 25%;
+    height: calc(var(--fontSize) * 3);
     width: 75%;
 
     color: var(--lightGray);
-    font-size: 1.5em;
+    font-size: var(--fontSize);
     text-align: center;
 }
 
@@ -308,7 +334,7 @@ body {
     height: 10%;
     width: 50%;
 
-    margin-top: auto;
+    bottom: 0px;
 
 
     & > div {
@@ -322,7 +348,7 @@ body {
             height: 100%;
             width: 100%;
 
-            filter: var(--darkOrange_filter);
+            filter: var(--lightGray_filter);
 
 
             transition: filter var(--transitionDuraTiming);
@@ -334,6 +360,19 @@ body {
                 filter: var(--white_filter);
             }
         }
+    }
+}
+
+
+#to_come {
+    & .project_thumbnail {
+        aspect-ratio: 1;
+        height: 40%;
+    }
+
+
+    & .project_link img {
+        filter: var(--darkOrange_filter);
     }
 }
 

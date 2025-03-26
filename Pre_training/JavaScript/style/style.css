@@ -28,17 +28,18 @@
     /* DIMENSIONS */
     --sectionGameNameHeight: 20vh;
     --sectionGameUiHeight: 65vh;
-    --sectionGameUiWidth: var(--sectionGameUiHeight);
+    --sectionGameUiWidth: 75vw;
     --sectionGameBtnHeight: 15vh;
     
     --gameAreaHeight: calc(var(--sectionGameUiHeight) / 1.25);
-    --gameAreaWidth: var(--gameAreaHeight);
+    --gameAreaWidth: calc(var(--sectionGameUiwidth) / 1.25);
 
 
-    /* FONT-SIZES */    
-    --fontSizeRound: calc(var(--gameAreaHeight) / 25);
-    --fontSizePhase: calc(var(--gameAreaHeight) / 10);
-    --fontSizeScore: calc(var(--gameAreaHeight) / 35);
+    /* FONT-SIZES */
+    --fontSizefactor: 0.75vmin;
+    --fontSizeRound: calc(var(--fontSizefactor) * 3);
+    --fontSizePhase: calc(var(--fontSizefactor) * 5);
+    --fontSizeScore: calc(var(--fontSizefactor) * 2);
 
 
     /* COLORS */
@@ -136,18 +137,20 @@ section#game_name_section {
 
 section#game_name_section .syllable {
     & p {
-        margin-left: auto;
-        margin-right: auto;
-
         text-align: center;
+
+        &.char_lat {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
 
     & .char_jp {
-        font-size: 1em;
+        font-size: 10vw;
     }
     & .char_lat {
-        font-size: 0.25em;
+        font-size: 2vw;
     }
 
 
@@ -179,8 +182,9 @@ section#game_area {
     position: relative;
     box-sizing: border-box;
 
-    height: var(--gameAreaHeight);
-    width: var(--gameAreaWidth);
+    aspect-ratio: 1;
+    max-width: 90%;
+    max-height: 80%;
 
     background-color: var(--redRisingSun_opaque);
     border-radius: 100%;
@@ -188,22 +192,25 @@ section#game_area {
 
 
 #choices_grid_back {
-    height: var(--gridSquare);
-    width: var(--gridSquare);
-}
+    height: 80%;
+    width: 80%;
 
 
-#choices_grid_back > img {
-    height: 100%;
-    width: 100%;
+    & > img {
+        height: 100%;
+        width: 100%;
+    }
 }
 
 
 #choices_grid {
     display: grid;
     /* creation of a 'gridCellNumber' square GRID with 'gridCellNumber'*'gridCellNumber' CELLs */
-    grid-template-columns: repeat(var(--gridCellNumber), calc(var(--gridSquare) / var(--gridCellNumber)));
-    grid-template-rows:  repeat(var(--gridCellNumber), calc(var(--gridSquare) / var(--gridCellNumber)));
+    grid-template-columns: repeat(var(--gridCellNumber), 1fr);
+    grid-template-rows:  repeat(var(--gridCellNumber), 1fr);
+    
+    height: 80%;
+    width: 80%;
 }
 
 
@@ -211,7 +218,7 @@ section#game_area {
     position: relative;
     box-sizing: border-box;
 
-    height: 100%;
+    aspect-ratio: 1;
     width: 100%;
 
     border-radius: 100%;
@@ -238,6 +245,7 @@ section#game_area {
             white-space: nowrap;
             text-align: center;
             font-weight: bold;
+            font-size: 1.5vmin;
         }
 
         
@@ -335,10 +343,11 @@ section#game_area {
     justify-content: center;
     align-items: center;
 
-    height: var(--gridSquare);
-    width: var(--gridSquare);
+    aspect-ratio: 1;
+    width: 100%;
 
     text-align: center;
+    font-size: 1vw;
 }
 
 
