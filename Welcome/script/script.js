@@ -19,7 +19,7 @@ window.addEventListener("click", () => {
     if (iframe_cv.style.display === "block") {
         section_cv.style.display = "none";
         iframe_cv.style.display = "none";
-        body.style.overflowY = "scroll";
+        body.style.overflowY = "auto";
     }
 } );
 // Prevent the event from bubbling when the CV itself is clicked

@@ -14,7 +14,53 @@
     <body>
         <section id="section_hero">
             <div id="div_info">
+                <div id="div_info_intro">
+                    <p>
+                        Too many awesome things to write,<br> I don't know where to start!
+                    </p>
+                </div>
 
+                <div id="div_info_picture">
+                    <div id="profile_pic">
+                        <img src="./Welcome/res/Kirbo.png" alt="Profile picture">
+                    </div>
+
+                    <div id="name">
+                        <p> Valstrasz </p>
+                    </div>
+                </div>
+
+                <div id="div_info_link">
+                    <div id="link_linkedin" class="div_link" onclick="window.open('https://www.linkedin.com/in/valentin-grave-69a243155/', '_blank');">
+                        <div class="logo">
+                            <img id="logo_linkedin" src="./Welcome/res/logo_linkedin.svg" alt="LinkedIn logo"/>
+                        </div>
+
+                        <div class="link">
+                            <p> LinkedIn </p>
+                        </div>
+                    </div>
+                    
+                    <div id="link_github" class="div_link" onclick="window.open('https://github.com/Valstrasz', '_blank');">
+                        <div class="logo">
+                            <img id="logo_github" src="./Welcome/res/logo_github.svg" alt="GitHub logo"/>
+                        </div>
+
+                        <div class="link">
+                            <p> GitHub </p>
+                        </div>
+                    </div>
+                    
+                    <div id="link_googlescholar" class="div_link" onclick="window.open('https://scholar.google.com/citations?user=WZst6JUAAAAJ', '_blank');">
+                        <div class="logo">
+                            <img id="logo_googlescholar" src="./Welcome/res/logo_googlescholar.svg" alt="Google Scholar logo"/>
+                        </div>
+
+                        <div class="link">
+                            <p> Google Scholar </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="div_cv_btn_container">
@@ -24,12 +70,46 @@
 
 
         <section id="section_project">
-			<a href="./Pre_training/HTML_CSS/page/index.html"> HTML / CSS </a>
-			<a href="./Pre_training/JavaScript/page/index.html"> JavaScript </a>
+            <div class="project">
+                <p class="project_name"> Black Mesa </p>
+
+                <img class="project_thumbnail" src="./Welcome/res/thumbnail_htmlcss.png" alt="Thumbnail HTML/CSS project"/>
+
+                <p class="project_description"> A simple website built to experiment using HTML/CSS. </p>
+
+                <div class="project_link">
+                    <div class="link_website" onclick="window.open('./Pre_training/HTML_CSS/page/index.html', '_blank');">
+                        <img src="./Welcome/res/logo_internet.svg" alt="logo_internet"/>
+                    </div>
+
+                    <div class="link_github" onclick="window.open('https://github.com/Valstrasz/Webpages/tree/main/Pre_training/HTML_CSS', '_blank');">
+                        <img src="./Welcome/res/logo_github.svg" alt="logo_github"/>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="project">
+                <p class="project_name"> JanKenPon </p>
+
+                <img class="project_thumbnail" src="./Welcome/res/thumbnail_javascript.png" alt="Thumbnail JavaScript project"/>
+
+                <p class="project_description"> A basic "Rock paper scissors" game created to explore JavaScript. </p>
+
+                <div class="project_link">
+                    <div class="link_website" onclick="window.open('./Pre_training/JavaScript/page/index.html', '_blank');">
+                        <img src="./Welcome/res/logo_internet.svg" alt="logo_internet"/>
+                    </div>
+
+                    <div class="link_github" onclick="window.open('https://github.com/Valstrasz/Webpages/tree/main/Pre_training/JavaScript', '_blank');">
+                        <img src="./Welcome/res/logo_github.svg" alt="logo_github"/>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="section_cv">
-            <iframe src="./Welcome/res/CV.pdf"></iframe>
+            <iframe src="./Welcome/res/CV.pdf#toolbar=0&navpanes=0"></iframe>
         </section>
         <!-- <object class="pdf" 
                 data="../res/CV.pdf"

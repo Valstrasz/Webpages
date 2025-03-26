@@ -18,8 +18,6 @@
     /* variables for sizes */
     --marginMain: 2rem;
     --divCvContainerSize: 15vh;
-    --pdfHeight: 75vh;
-    --pdfWidth: 50vw;
 
 
     /* variables with values for "colors" */
@@ -33,11 +31,11 @@
     /* variables with values for "filters corresponding to colors" */
     --white_filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(162deg) brightness(103%) contrast(103%);
     --black_filter: brightness(0) saturate(100%) invert(0%) sepia(3%) saturate(4%) hue-rotate(348deg) brightness(106%) contrast(100%);
-    --lightGray_filter: brightness(0) saturate(100%) invert(22%) sepia(0%) saturate(0%) hue-rotate(144deg) brightness(99%) contrast(87%);
-    --darkGray_filter: brightness(0) saturate(100%) invert(14%) sepia(0%) saturate(1098%) hue-rotate(291deg) brightness(81%) contrast(88%);
-    --lightOrange_filter: brightness(0) saturate(100%) invert(55%) sepia(28%) saturate(4682%) hue-rotate(0deg) brightness(102%) contrast(106%);
-    --medOrange_filter: brightness(0) saturate(100%) invert(40%) sepia(97%) saturate(851%) hue-rotate(3deg) brightness(99%) contrast(101%);
-    --darkOrange_filter: brightness(0) saturate(100%) invert(40%) sepia(78%) saturate(950%) hue-rotate(2deg) brightness(92%) contrast(104%);
+    --lightGray_filter: invert(22%) sepia(0%) saturate(0%) hue-rotate(144deg) brightness(99%) contrast(87%);
+    --darkGray_filter: invert(14%) sepia(0%) saturate(1098%) hue-rotate(291deg) brightness(81%) contrast(88%);
+    --lightOrange_filter: invert(55%) sepia(28%) saturate(4682%) hue-rotate(0deg) brightness(102%) contrast(106%);
+    --medOrange_filter: invert(40%) sepia(97%) saturate(851%) hue-rotate(3deg) brightness(99%) contrast(101%);
+    --darkOrange_filter: invert(40%) sepia(78%) saturate(950%) hue-rotate(2deg) brightness(92%) contrast(104%);
 
 
     /* variables for animations */
@@ -48,7 +46,7 @@
 body {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 30vh 70vh;
+    grid-template-rows: 50vh 50vh;
     grid-template-areas: "grid_hero" "grid_project";
     justify-content: center;
     align-items: center;
@@ -63,18 +61,19 @@ body {
 #section_hero {
     grid-area: grid_hero;
 
-    position: relative;
+    box-sizing: border-box;
 
     height: 100%;
     width: 100%;
+
+    padding: calc(100% - var(--divCvContainerSize)) 5%;
 
     background-color: var(--lightOrange);
 }
 
 
 #div_info {
-    position: absolute;
-    box-sizing: border-box;
+    position: relative;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -83,15 +82,15 @@ body {
     justify-content: center;
     align-items: center;
 
+    /* height: calc(100% - var(--divCvContainerSize));
+    width: 90%; */
+
     height: 100%;
-    width: 90%;
-    
-    padding-top: 2em;
-    padding-bottom: calc(var(--divCvContainerSize) / 2);
+    width: 100%;
     
     /* centering on both axes */
-    inset: 50%;
-    transform: translate(-50%, -50%);
+    /* inset: 50%;
+    transform: translate(-50%, -50%); */
 }
 
 
@@ -100,7 +99,7 @@ body {
 
     padding: 1em 1ch;
 
-    font-size: 2.1em;
+    font-size: 3em;
     text-align: center;
 }
 
@@ -109,7 +108,7 @@ body {
     grid: info_picture;
 
     position: relative;
-    /* inset: 0; */
+    inset: 0;
 
     height: 100%;
     width: 100%;
@@ -119,7 +118,7 @@ body {
         position: relative;
 
         aspect-ratio: 1;
-        height: 95%;
+        height: 75%;
 
         overflow: hidden;
         border-radius: 100%;
@@ -141,10 +140,10 @@ body {
 
     & #name{
         position: absolute;
-        bottom: 0%;
+        bottom: 5%;
 
         color: var(--lightGray);
-        font-size: 3em;
+        font-size: 5em;
 
     
         /* centering horizontally */
@@ -161,10 +160,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 20%;
+    gap: 1.5em;
 
-    height: 100%;
-    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
 
     padding: 1em 1ch;
 
@@ -211,10 +210,6 @@ body {
 #section_project {
     grid-area: grid_project;
 
-    box-sizing: border-box;
-    position: relative;
-    inset: 0;
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -224,88 +219,12 @@ body {
 
     height: 100%;
     width: 100%;
-
-    padding-top: calc(var(--divCvContainerSize) / 2);
 }
 
 
 .project {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-
     height: 75%;
     width: 35%;
-
-    padding: 2em 1ch;
-
-    background-color: var(--lightOrange);
-    border-radius: 1em;
-
-
-    & .project_name {
-        font-size: 3em;
-    }
-}
-
-
-.project_thumbnail {
-    border-radius: 1em;
-
-    width: 50%;
-
-    margin: 2em 0;
-}
-
-
-.project_description {
-    color: var(--lightGray);
-    font-size: 2em;
-    text-align: center;
-}
-
-
-.project_link {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100%;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-
-    align-self: flex-end;
-
-
-    & > div {
-        aspect-ratio: 1;
-        width: 20%;
-
-        margin: 0 auto;
-
-
-        & > img {
-            height: 100%;
-            width: 100%;
-
-            filter: var(--darkOrange_filter);
-
-
-            transition: filter var(--transitionDuraTiming), transform var(--transitionDuraTiming);
-
-
-            &:hover {
-                cursor: pointer;
-    
-                filter: var(--white_filter);
-    
-                transform: scale(0.9);
-            }
-        }
-    }
 }
 
 
@@ -315,8 +234,6 @@ body {
 
 #div_cv_btn_container {
     position: absolute;
-    /* needed for it to appear in front of '#section_project' */
-    z-index: 1;
 
     box-sizing: border-box;
 
@@ -386,9 +303,6 @@ body {
 
 
 #section_cv {
-    /* needed for it to appear in front of '#div_cv_btn_container' */
-    z-index: 2;
-
     display: none;
     position: fixed;
     inset: 0;
@@ -402,6 +316,9 @@ body {
 
 /* /!\ AN IFRAME DOESN'T INHERIT ITS PARENT'S CSS /!\ */
 iframe {
+    --pdfHeight: 75vh;
+    --pdfWidth: 50vw;
+
     display: none;
     position: fixed;
     top: calc( (100vh - var(--pdfHeight)) / 2 );
