@@ -6,9 +6,9 @@
 @import url("https://fonts.googleapis.com/css2?&family=ZCOOL+QingKe+HuangYou&display=swap");
 
 
+
 :root {
-    height: 100%;
-    width: 100%;
+    inset: 0;
 
     font-family: "ZCOOL QingKe HuangYou";
     font-size: 1vw;
@@ -45,6 +45,16 @@
 }
 
 
+.centered {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
 body {
     display: grid;
     grid-template-columns: 100%;
@@ -53,17 +63,17 @@ body {
     justify-content: center;
     align-items: center;
 
-    height: 100vh;
-    width: 100vw;
-
     background-color: var(--darkGray);
 }
 
 
 #section_hero {
     grid-area: grid_hero;
+    box-sizing: border-box;
 
     position: relative;
+
+    padding: calc(var(--divCvContainerSize) / 2) 0;
 
     height: 100%;
     width: 100%;
@@ -73,53 +83,47 @@ body {
 
 
 #div_info {
-    position: absolute;
-    box-sizing: border-box;
-
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
+
+    box-sizing: border-box;
 
     height: 100%;
-    width: 90%;
-    
-    padding-top: 2em;
-    padding-bottom: calc(var(--divCvContainerSize) / 2);
-    
-    /* centering on both axes */
-    inset: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
 
 
-    /* & > * {
-        min-width: 100px;
-    } */
+    & > * {
+        box-sizing: border-box;
+
+        flex: 1 1 max(30%, 200px);
+        height: 100%;
+    }
 }
 
 
 #div_info_intro {
-    width: 30vw;
+    position: relative;
 
-    padding: 1em 1ch;
-
-    font-size: 2.1em;
+    font-size: 4vmin;
     text-align: center;
+
+    
+    & > p {
+        width: 100%;
+
+        white-space: nowrap;
+    }
 }
 
 
 #div_info_picture {
     position: relative;
-    /* inset: 0; */
-
-    height: 100%;
-    width: 30vw;
 
 
     & #profile_pic {
-        position: relative;
-
         aspect-ratio: 1;
         height: 95%;
 
@@ -127,23 +131,12 @@ body {
 
         background-color: white;
 
-    
-        /* centering on both axes */
-        inset: 50%;
-        transform: translate(-50%, -50%);
-
 
         & img {
-            position: absolute;
             display: block;
 
             aspect-ratio: 1;
             height: 80%;
-
-            
-            /* centering on both axes */
-            inset: 50%;
-            transform: translate(-50%, -50%);
         }
     }
 
@@ -168,18 +161,26 @@ body {
 
 
 #div_info_link {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20%;
+    position: relative;
 
-    height: 100%;
-    width: 30vw;
+    width: fit-content;
 
-    padding: 1em 1ch;
+    margin-left: auto;
+    margin-right: auto;
 
-    font-size: 2em;
+    
+    & #div_info_link_boundingbox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1ex;
+
+        height: fit-content;
+        width: fit-content;
+    
+        font-size: 3.5vmin;
+    }
 
 
     & .div_link {
@@ -187,20 +188,33 @@ body {
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        gap: 1ch;
-
-        height: 20%;
+        gap: 0.5ch;
 
         color: black;
 
         cursor: pointer;
 
 
-        & .logo img {
-            aspect-ratio: 1;
-            height: 1em;
+        & .logo {
+            position: relative;
 
-            filter: var(--black_filter);
+            aspect-ratio: 1;
+            height: 2ex;
+
+
+            & img {
+                height: 100%;
+                width: 100%;
+
+                filter: var(--black_filter);
+            }
+        }
+
+
+        & .link {
+            position: relative;
+
+            white-space: nowrap;
         }
 
 
@@ -212,9 +226,6 @@ body {
             }
         }
     }
-
-
-
 }
 
 
@@ -241,18 +252,16 @@ body {
 
 
 .project {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas: "project_name" "project_content";
+    justify-content: center;
     align-items: center;
 
     height: 75%;
     max-width: 35%;
     min-width: 300px;
-
-    padding: 2em 3ch;
 
     background-color: var(--lightOrange);
     border-radius: 1em;
@@ -270,14 +279,12 @@ body {
 
 
 .project_name {
-    /* flex-basis: 20%; */
+    grid-area: project_name;
+
     position: relative;
 
-    top: -1em;
-    left: 0px;
-
-    height: 3em;
-    width: 125%;
+    height: 100%;
+    width: 100%;
 
     font-size: 6vmin;
 
@@ -285,18 +292,25 @@ body {
 
 
     & p {
-        position: absolute;
-
         display: block;
 
-        width: fit-content;
+        width: 100%;
 
-    
-        /* centering horizontally */
-        bottom: 0.25em;
-        left: 50%;
-        transform: translateX(-50%);
+        text-align: center;
     }
+}
+
+
+.project_content {
+    grid-area: project_content;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -314,7 +328,6 @@ body {
     --fontSize: 3vmin;
 
     /* flex-basis: 25%; */
-    height: calc(var(--fontSize) * 3);
     width: 75%;
 
     color: var(--lightGray);
@@ -355,9 +368,9 @@ body {
 
 
             &:hover {
-                cursor: pointer;
-    
                 filter: var(--white_filter);
+
+                cursor: pointer;    
             }
         }
     }
@@ -373,45 +386,33 @@ body {
 
     & .project_link img {
         filter: var(--darkOrange_filter);
+
+        cursor: default;
     }
 }
 
 
 
-
-
-
 #div_cv_btn_container {
-    position: absolute;
     /* needed for it to appear in front of '#section_project' */
     z-index: 1;
 
+    position: relative;
+
     box-sizing: border-box;
-
-    /* centering horizontally */
-    bottom: 0%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-
-    padding: 1em;
 
     height: var(--divCvContainerSize);
     width: var(--divCvContainerSize);
+
+    margin: 0 auto;
 
     border-radius: 100%;
 
     background-color: var(--lightOrange);
 
-
     & #div_cv_btn {
-        position: relative;
-
-        /* centering on both axes */
-        inset: 50%;
-        transform: translate(-50%, -50%);
-
-        height: 100%;
-        width: 100%;
+        height: 80%;
+        width: 80%;
 
         border-radius: 100%;
 
@@ -429,8 +430,6 @@ body {
         & > p {
             position: relative;
 
-            inset: 50%;
-            transform: translate(-50%, -50%);
             font-size: calc(var(--divCvContainerSize) * 0.45);
             text-align: center;
 

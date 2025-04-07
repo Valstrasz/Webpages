@@ -13,7 +13,6 @@ div_cv_btn.addEventListener("click", (event) => {
 } );
 
 
-
 // Detect a click outside the CV iframe (when displayed) to close it
 window.addEventListener("click", () => {
     if (iframe_cv.style.display === "block") {
@@ -27,6 +26,21 @@ window.addEventListener("click", () => {
 iframe_cv.addEventListener("click", (event) => {
     event.stopPropagation();
 })
+
+
+
+// ##################################
+// ##################################
+// ##################################
+
+
+
+// let testFunc = () => {
+//     let picture = document.querySelector("#div_cv_btn_container");
+//     let resizer = new ResizeObserver(() => {console.log("Hello there M8!");});
+//     resizer.observe(picture);
+// }
+// testFunc();
 
 
 
